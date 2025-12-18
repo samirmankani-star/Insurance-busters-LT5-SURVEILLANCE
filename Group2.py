@@ -50,6 +50,7 @@ df["Q6"] = df['To what extent do you accept insurance companies using your perso
 df["Education_numeric"] = df["What is your education?"].map(education_mapping)
 
 # Additional Score columns for Country Analysis
+country_col = "In which country have you taken out an insurance?"
 aware_decision_col = "To what extent are you aware that insurance companies use profiling in their decision-making processes?"
 aware_bdp_col = "To what extent are you aware of big data profiling?"
 accept_col = "To what extent do you accept insurance companies using your personal data for profiling purposes?"
