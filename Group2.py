@@ -123,7 +123,7 @@ plt.show()
 
 plt.figure(figsize=(10, 6))
 sns.boxplot(data=df, x='Awareness_Score_NIS', y='Acceptance_Score', hue='Awareness_Score_NIS', palette="viridis", legend=False)
-plt.title("Acceptance Levels by Awareness Score (NIS)")
+plt.title("Acceptance Levels (INSURANCE) by Awareness Score (GENERAL)  ")
 plt.xticks(ticks=range(7), labels=[1,2,3,4,5,6,7])
 plt.show()
 
