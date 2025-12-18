@@ -8,7 +8,7 @@ from scipy.stats import linregress
 df = pd.read_excel('surveillance_formatted.csv')
 
 
-# 2. MAPPINGS & DATA TRANSFORMATION 
+# MAPPINGS & DATA TRANSFORMATION 
 aware_mapping = {
     "Extremely unaware": 1, "Very unaware": 2, "Somewhat unaware": 3,
     "Neither aware or unware": 4, "Somewhat aware": 5, "Very aware": 6, "Extremely aware": 7
@@ -50,7 +50,6 @@ df["Q6"] = df['To what extent do you accept insurance companies using your perso
 df["Education_numeric"] = df["What is your education?"].map(education_mapping)
 
 # Additional Score columns for Country Analysis
-country_col = "In which country have you taken out an insurance?"
 aware_decision_col = "To what extent are you aware that insurance companies use profiling in their decision-making processes?"
 aware_bdp_col = "To what extent are you aware of big data profiling?"
 accept_col = "To what extent do you accept insurance companies using your personal data for profiling purposes?"
@@ -59,7 +58,7 @@ df['Awareness_Score'] = df[aware_decision_col].map(insurance_aware_mapping)
 df['Awareness_Score_NIS'] = df[aware_bdp_col].map(aware_mapping)
 df['Acceptance_Score'] = df[accept_col].map(accept_mapping)
 
-# 3. DESCRIPTIVE STATISTICS 
+# DESCRIPTIVE STATISTICS 
 print("Head of Data:")
 print(df.head())
 
@@ -80,7 +79,7 @@ correlations = {
 }
 print("\nCorrelations with Education:", correlations)
 
-# 4. VISUALIZATIONS 
+# VISUALIZATIONS 
 sns.set_theme(style="whitegrid")
 
 # Age Distribution
@@ -98,15 +97,6 @@ plt.ylim(-0.1, 0.5)
 plt.ylabel("Correlation with Education")
 plt.title("Correlation between Education and Responses")
 plt.axhline(0, color='gray', linestyle='--')
-plt.show()
-
-# Relative Frequency by Country
-ct_aware = pd.crosstab(df[country_col], df['Awareness_Score'], normalize='index') * 100
-ax = ct_aware.plot(kind='bar', stacked=True, figsize=(10, 6), colormap='viridis')
-plt.title("Relative Frequency of Awareness Scores by Country")
-plt.ylabel("Percentage (%)")
-plt.legend(title="Awareness Score", bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.tight_layout()
 plt.show()
 
 # Age Group Boxplots
